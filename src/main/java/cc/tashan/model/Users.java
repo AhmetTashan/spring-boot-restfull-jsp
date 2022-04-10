@@ -19,12 +19,7 @@ import java.util.List;
 @NoArgsConstructor
 //@ApiModel(value = "Users", description = "Users entity")
 @Table(name = "users")
-public class Users implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    private Long id;
+public class Users extends BaseModel {
 
     @Column(name = "username", length = 64, nullable = false)
     private String username;
@@ -53,13 +48,4 @@ public class Users implements Serializable {
 
     @OneToMany(mappedBy = "userId", cascade = CascadeType.ALL)
     private List<Todos> todos;
-
-    @Column(name = "created_at")
-    protected LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    protected LocalDateTime updatedAt;
-
-    @Column(name = "deleted_at")
-    protected LocalDateTime deletedAt;
 }

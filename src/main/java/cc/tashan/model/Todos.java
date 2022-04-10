@@ -15,12 +15,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @ApiModel(value = "Todos", description = "Todos entity")
 @Table(name = "todos")
-public class Todos implements Serializable {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @ApiModelProperty(value = "Todos id", example = "1")
-    private Long id;
+public class Todos extends BaseModel {
 
     @Lob
     @Column(name = "content")
@@ -32,15 +27,4 @@ public class Todos implements Serializable {
     @ApiModelProperty(value = "Kayıtlı kullanıcının numarası", required = true)
     private Users userId;
 
-    @Column(name = "created_at")
-    @ApiModelProperty(value = "Oluşturulma tarihi", required = true)
-    protected LocalDateTime createdAt;
-
-    @Column(name = "updated_at")
-    @ApiModelProperty(value = "Güncellenme tarihi", required = true)
-    protected LocalDateTime updatedAt;
-
-    @Column(name = "deleted_at")
-    @ApiModelProperty(value = "Silinme tarihi", required = true)
-    protected LocalDateTime deletedAt;
 }
